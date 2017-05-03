@@ -1,0 +1,31 @@
+{
+  "name": "sip2",
+  "version": "0.0.0",
+  "description": "SIP2 communication for Node.js",
+  "main": "index.js",
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "scripts": {
+    "lint": "./node_modules/.bin/eslint **/*.js",
+    "test": "npm run lint && NODE_ENV=test ./node_modules/.bin/istanbul cover --dir ./coverage ./node_modules/.bin/_mocha -- -R spec -t 15000 --recursive --slow 2"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dateformat": "~2.0.0"
+  },
+  "devDependencies": {
+    "eslint": "~3.19.0",
+    "eslint-config-airbnb": "~14.1.0",
+    "eslint-plugin-import": "~2.2.0",
+    "eslint-plugin-jsx-a11y": "~4.0.0",
+    "eslint-plugin-react": "~6.10.3",
+    "istanbul": "~0.4.5",
+    "mocha": "~3.3.0"
+  }
+}
