@@ -50,20 +50,7 @@ Gemfile.lock
 /test/coverage/*
 .coverage
 
-# generated css
-# public/css/*.css
-
 # Logs
 npm-debug.log
 newrelic_agent.log
 mocha.json
-
-# Vagrant
-.vagrantbox-postinstallscripts
-
-# Frontend
-public/vendor
-
-# Config
-config/apps.local.yml
-config/database.local.yml

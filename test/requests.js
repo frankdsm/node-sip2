@@ -23,7 +23,7 @@ const CurrencyType = require('../lib/variables/CurrencyType');
 const PaymentType = require('../lib/variables/PaymentType');
 const StatusCode = require('../lib/variables/StatusCode');
 
-describe('Login', () => {
+describe('LoginRequest', () => {
   describe('#getMessage', () => {
     it('should build a SIP2 login message', (done) => {
       const loginUserId = 'LoginUserID';
@@ -31,14 +31,14 @@ describe('Login', () => {
       const locationCode = 'LocationCode';
       const loginRequest = new Login(loginUserId, loginPassword, locationCode);
       loginRequest.sequence = 5;
-      const testResponse = '9300CNLoginUserID|COLoginPassword|CPLocationCode|AY5AZEC7B\r\n';
-      assert.equal(loginRequest.getMessage(), testResponse);
+      const testMessage = '9300CNLoginUserID|COLoginPassword|CPLocationCode|AY5AZEC7B\r\n';
+      assert.equal(loginRequest.getMessage(), testMessage);
       done();
     });
   });
 });
 
-describe('SCStatus', () => {
+describe('SCStatusRequest', () => {
   describe('#getMessage', () => {
     it('should build a SIP2 SC status message', (done) => {
       const status = StatusCode.OK;
@@ -46,27 +46,27 @@ describe('SCStatus', () => {
       const protocolVersion = '1.00';
       const scStatusRequest = new SCStatus(status, maxPrintWidth, protocolVersion);
       scStatusRequest.sequence = 1;
-      const testResponse = '990401.00|AY1AZFC59\r\n';
-      assert.equal(scStatusRequest.getMessage(), testResponse);
+      const testMessage = '990401.00|AY1AZFC59\r\n';
+      assert.equal(scStatusRequest.getMessage(), testMessage);
       done();
     });
   });
 });
 
-describe('RequestResend', () => {
+describe('RequestResendRequest', () => {
   describe('#getMessage', () => {
     it('should build a SIP2 request resend message', (done) => {
       const requestResendRequest = new RequestResend();
       requestResendRequest.sequence = 1;
       requestResendRequest.errorDetection = false;
-      const testResponse = '97\r\n';
-      assert.equal(requestResendRequest.getMessage(), testResponse);
+      const testMessage = '97\r\n';
+      assert.equal(requestResendRequest.getMessage(), testMessage);
       done();
     });
   });
 });
 
-describe('PatronStatus', () => {
+describe('PatronStatusRequest', () => {
   describe('#getMessage', () => {
     it('should build a SIP2 patron status message', (done) => {
       const patronStatusRequest = new PatronStatus();
@@ -74,14 +74,14 @@ describe('PatronStatus', () => {
       patronStatusRequest.institutionId = 'id_21';
       patronStatusRequest.patronIdentifier = '104000000105';
       patronStatusRequest.transactionDate = Message.getDateTime(new Date(1996, 1, 12, 10, 2, 39));
-      const testResponse = '2300119960212    100239AOid_21|AA104000000105|AC|AD|AY2AZF271\r\n';
-      assert.equal(patronStatusRequest.getMessage(), testResponse);
+      const testMessage = '2300119960212    100239AOid_21|AA104000000105|AC|AD|AY2AZF271\r\n';
+      assert.equal(patronStatusRequest.getMessage(), testMessage);
       done();
     });
   });
 });
 
-describe('PatronInformation', () => {
+describe('PatronInformationRequest', () => {
   describe('#getMessage', () => {
     it('should build a SIP2 patron information message', (done) => {
       const type = 'hold';
@@ -90,14 +90,14 @@ describe('PatronInformation', () => {
       patronInformationRequest.institutionId = 'InstitutionID';
       patronInformationRequest.patronIdentifier = 'PatronID';
       patronInformationRequest.transactionDate = Message.getDateTime(new Date(1998, 6, 23, 9, 19, 5));
-      const testResponse = '6300119980723    091905Y         AOInstitutionID|AAPatronID|BP00001|BQ00005|AY1AZEA83\r\n';
-      assert.equal(patronInformationRequest.getMessage(), testResponse);
+      const testMessage = '6300119980723    091905Y         AOInstitutionID|AAPatronID|BP00001|BQ00005|AY1AZEA83\r\n';
+      assert.equal(patronInformationRequest.getMessage(), testMessage);
       done();
     });
   });
 });
 
-describe('BlockPatron', () => {
+describe('BlockPatronRequest', () => {
   describe('#getMessage', () => {
     it('should build a SIP2 block patron message', (done) => {
       const cardRetained = false;
@@ -106,14 +106,14 @@ describe('BlockPatron', () => {
       blockPatronRequest.patronIdentifier = '104000000705';
       blockPatronRequest.sequence = 2;
       blockPatronRequest.transactionDate = Message.getDateTime(new Date(1996, 1, 13, 16, 23, 52));
-      const testResponse = '01N19960213    162352AO|ALCARD BLOCK TEST|AA104000000705|AC|AY2AZF02F\r\n';
-      assert.equal(blockPatronRequest.getMessage(), testResponse);
+      const testMessage = '01N19960213    162352AO|ALCARD BLOCK TEST|AA104000000705|AC|AY2AZF02F\r\n';
+      assert.equal(blockPatronRequest.getMessage(), testMessage);
       done();
     });
   });
 });
 
-describe('PatronEnable', () => {
+describe('PatronEnableRequest', () => {
   describe('#getMessage', () => {
     it('should build a SIP2 item information message', (done) => {
       const patronEnableRequest = new PatronEnable();
@@ -121,14 +121,14 @@ describe('PatronEnable', () => {
       patronEnableRequest.institutionId = 'Certification Institute ID';
       patronEnableRequest.patronIdentifier = 'PatronID';
       patronEnableRequest.transactionDate = Message.getDateTime(new Date(1998, 6, 23, 9, 42, 40));
-      const testResponse = '2519980723    094240AOCertification Institute ID|AAPatronID|AY4AZEBF1\r\n';
-      assert.equal(patronEnableRequest.getMessage(), testResponse);
+      const testMessage = '2519980723    094240AOCertification Institute ID|AAPatronID|AY4AZEBF1\r\n';
+      assert.equal(patronEnableRequest.getMessage(), testMessage);
       done();
     });
   });
 });
 
-describe('ItemInformation', () => {
+describe('ItemInformationRequest', () => {
   describe('#getMessage', () => {
     it('should build a SIP2 item information message', (done) => {
       const itemIdentifier = 'ItemBook';
@@ -136,14 +136,14 @@ describe('ItemInformation', () => {
       itemInformationRequest.sequence = 1;
       itemInformationRequest.institutionId = 'Certification Institute ID';
       itemInformationRequest.transactionDate = Message.getDateTime(new Date(1998, 6, 23, 10, 0, 0));
-      const testResponse = '1719980723    100000AOCertification Institute ID|ABItemBook|AY1AZEBEB\r\n';
-      assert.equal(itemInformationRequest.getMessage(), testResponse);
+      const testMessage = '1719980723    100000AOCertification Institute ID|ABItemBook|AY1AZEBEB\r\n';
+      assert.equal(itemInformationRequest.getMessage(), testMessage);
       done();
     });
   });
 });
 
-describe('Checkout', () => {
+describe('CheckoutRequest', () => {
   describe('#getMessage', () => {
     it('should build a SIP2 checkout message', (done) => {
       const scRenewalPolicy = true;
@@ -153,14 +153,14 @@ describe('Checkout', () => {
       checkoutRequest.patronIdentifier = '104000000105';
       checkoutRequest.sequence = 3;
       checkoutRequest.transactionDate = Message.getDateTime(new Date(1996, 1, 12, 10, 5, 14));
-      const testResponse = '11YN19960212    10051419960212    100514AO|AA104000000105|AB000000000005792|AC|AY3AZEDC2\r\n';
-      assert.equal(checkoutRequest.getMessage(), testResponse);
+      const testMessage = '11YN19960212    10051419960212    100514AO|AA104000000105|AB000000000005792|AC|AY3AZEDC2\r\n';
+      assert.equal(checkoutRequest.getMessage(), testMessage);
       done();
     });
   });
 });
 
-describe('Checkin', () => {
+describe('CheckinRequest', () => {
   describe('#getMessage', () => {
     it('should build a SIP2 checkin message', (done) => {
       const returnDate = null;
@@ -172,14 +172,14 @@ describe('Checkin', () => {
       checkinRequest.sequence = 2;
       checkinRequest.cancel = false;
       checkinRequest.transactionDate = Message.getDateTime(new Date(1998, 7, 21, 8, 57, 21));
-      const testResponse = '09N19980821    085721                  APCertification Terminal Location|AOCertification Institute ID|ABCheckInBook|ACTPWord|BIN|AY2AZD6A5\r\n';
-      assert.equal(checkinRequest.getMessage(), testResponse);
+      const testMessage = '09N19980821    085721                  APCertification Terminal Location|AOCertification Institute ID|ABCheckInBook|ACTPWord|BIN|AY2AZD6A5\r\n';
+      assert.equal(checkinRequest.getMessage(), testMessage);
       done();
     });
   });
 });
 
-describe('FeePaid', () => {
+describe('FeePaidRequest', () => {
   describe('#getMessage', () => {
     it('should build a SIP2 fee paid message', (done) => {
       const feeType = FeeType.OVERDUE;
@@ -196,14 +196,14 @@ describe('FeePaid', () => {
       feeTypeRequest.institutionId = institutionId;
       feeTypeRequest.patronIdentifier = patronIdentifier;
       feeTypeRequest.transactionDate = Message.getDateTime(new Date(1998, 6, 23, 9, 32, 11));
-      const testResponse = '3719980723    0932110401USDBV111.11|AOCertification Institute ID|AAPatronID|BKTransactionID|AY2AZE1EF\r\n';
-      assert.equal(feeTypeRequest.getMessage(), testResponse);
+      const testMessage = '3719980723    0932110401USDBV111.11|AOCertification Institute ID|AAPatronID|BKTransactionID|AY2AZE1EF\r\n';
+      assert.equal(feeTypeRequest.getMessage(), testMessage);
       done();
     });
   });
 });
 
-describe('EndPatronSession', () => {
+describe('EndPatronSessionRequest', () => {
   describe('#getMessage', () => {
     it('should build a SIP2 end patron session message', (done) => {
       const endPatronSessionRequest = new EndPatronSession();
@@ -211,8 +211,8 @@ describe('EndPatronSession', () => {
       endPatronSessionRequest.institutionId = 'Certification Institute ID';
       endPatronSessionRequest.patronIdentifier = 'PatronID';
       endPatronSessionRequest.transactionDate = Message.getDateTime(new Date(1998, 6, 23, 9, 40, 14));
-      const testResponse = '3519980723    094014AOCertification Institute ID|AAPatronID|AY3AZEBF2\r\n';
-      assert.equal(endPatronSessionRequest.getMessage(), testResponse);
+      const testMessage = '3519980723    094014AOCertification Institute ID|AAPatronID|AY3AZEBF2\r\n';
+      assert.equal(endPatronSessionRequest.getMessage(), testMessage);
       done();
     });
   });
