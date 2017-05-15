@@ -142,10 +142,14 @@ describe('PatronInformationResponse', () => {
       assert.equal(response.overdueItemsLimit, 3);
       assert.equal(response.chargedItemsLimit, 10);
       assert.equal(response.validPatron, true);
-      assert.equal(response.validPatronused, true);
 
       assert.equal(response.feeAmount, null);
       assert.equal(response.feeLimit, null);
+      assert.equal(response.items.length, 2);
+      assert(response.items.indexOf('ChargeItem1') > -1);
+      assert(response.items.indexOf('ChargeItem2') > -1);
+      assert.equal(response.itemType, 'CHARGED');
+      assert.equal(response.itemTypeId, 'AU');
 
       assert.equal(response.homeAddress, 'Home Address');
       assert.equal(response.email, 'E Mail Address');
