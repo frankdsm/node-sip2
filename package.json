@@ -1,6 +1,6 @@
 {
   "name": "sip2",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "SIP2 communication for Node.js",
   "main": "index.js",
   "engines": {
