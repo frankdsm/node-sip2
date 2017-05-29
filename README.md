@@ -34,7 +34,7 @@ function requestPatronInformation(loginResponse, cb) {
 }
 
 async.waterfall([
-  sip2.connect,
+  connect,
   requestLogin,
   requestPatronInformation,
 ], (err, patronInformationResponse) => {
