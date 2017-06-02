@@ -28,6 +28,21 @@ const PatronInformationResponse = require('./lib/responses/PatronInformation');
 const PatronStatusResponse = require('./lib/responses/PatronStatus');
 const ACStatusResponse = require('./lib/responses/ACStatus');
 
+// Variables
+const CirculationStatus = require('./lib/variables/CirculationStatus');
+const CurrencyType = require('./lib/variables/CurrencyType');
+const FeeType = require('./lib/variables/FeeType');
+const ItemType = require('./lib/variables/ItemType');
+const Language = require('./lib/variables/Language');
+const MediaType = require('./lib/variables/MediaType');
+const PatronStatus = require('./lib/variables/PatronStatus');
+const PaymentType = require('./lib/variables/PaymentType');
+const SecurityMarker = require('./lib/variables/SecurityMarker');
+const StatusCode = require('./lib/variables/StatusCode');
+const Summary = require('./lib/variables/Summary');
+const SupportedMessages = require('./lib/variables/SupportedMessages');
+
+
 module.exports = {
   Connection,
   LoginRequest,
@@ -52,4 +67,16 @@ module.exports = {
   PatronInformationResponse,
   PatronStatusResponse,
   ACStatusResponse,
+  CirculationStatus,
+  CurrencyType,
+  FeeType,
+  ItemType,
+  Language,
+  MediaType,
+  PatronStatus,
+  PaymentType,
+  SecurityMarker,
+  StatusCode,
+  Summary,
+  SupportedMessages,
 };
